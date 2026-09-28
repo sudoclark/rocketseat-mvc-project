@@ -1,6 +1,6 @@
 from src.models.sqlite.interfaces.people_repository import PeopleRepositoryInterface
 
-class PeopleController:
+class PeopleCreatorController:
     def __init__(self, people_repository: PeopleRepositoryInterface):
         self.__people_repository = people_repository
 

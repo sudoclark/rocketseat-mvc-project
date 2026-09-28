@@ -1,5 +1,5 @@
 # pylint: disable=unused-argument
-from .person_finder_controller import PersonFinderController
+from .people_finder_controller import PeopleFinderController
 
 class MockPerson:
     def __init__(self, first_name, last_name, pet_name, pet_type):
@@ -18,7 +18,7 @@ class MockRepository:
         )
 
 def test_find_person():
-    controller = PersonFinderController(MockRepository())
+    controller = PeopleFinderController(MockRepository())
     response = controller.find(123)
 
     expected_response = {
