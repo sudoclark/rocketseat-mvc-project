@@ -1,4 +1,5 @@
 from src.models.sqlite.interfaces.people_repository import PeopleRepositoryInterface
+from src.errors.http_types.http_bad_request import HttpBadRequestError
 from .interfaces.person_creator_controller import PeopleCreatorControllerInterface
 
 class PeopleCreatorController(PeopleCreatorControllerInterface):
@@ -19,7 +20,7 @@ class PeopleCreatorController(PeopleCreatorControllerInterface):
 
     def __validate_names(self, first_name: str, last_name: str) -> None:
         if not first_name.isalpha() or not last_name.isalpha():
-            raise Exception("Os nomes precisam ser caracteres de A-Z")
+            raise HttpBadRequestError("Os nomes precisam ser caracteres de A-Z")
 
     def __insert_person_into_db(self, first_name: str, last_name: str, age: int, pet_id: int) -> None:
         self.__people_repository.insert_person(first_name, last_name, age, pet_id)
